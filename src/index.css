@@ -1,13 +1,175 @@
+/* General styles */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.app-container.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+.app-container.dark-mode header h1 {
+  color: #fff;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 25px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-switch label:before {
+  content: "";
+  position: absolute;
+  height: 21px;
+  width: 21px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.toggle-switch input:checked + label {
+  background-color: #4caf50;
+}
+
+.toggle-switch input:checked + label:before {
+  transform: translateX(25px);
+}
+
+/* Cards Container */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Card styles */
+.card {
+  flex: 1 1 calc(50% - 40px);
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.app-container.dark-mode .card {
+  background: #1e1e1e;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  margin: 0 0 15px;
+}
+
+.upload-card,
+.result-card {
+  text-align: center;
+}
+
+/* Upload Input and Button */
+input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: 90%;
+}
+
+.upload-button {
+  background: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.upload-button:hover {
+  background: #45a049;
+}
+
+/* Result Card Content */
+.result-content {
+  margin-top: 15px;
+}
+
+.result-content.detected p {
+  color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.result-content.not-detected p {
+  color: green;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.result-image {
+  width: 90%;
+  border-radius: 10px;
+  border: 2px solid red;
+  margin-top: 15px;
+}
+
+.placeholder-text {
+  color: #888;
+  font-style: italic;
 }

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./index";
 
 function App() {
   const [file, setFile] = useState(null);
   const [response, setResponse] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -26,65 +28,71 @@ function App() {
       });
 
       if (res.status === 200) {
-        setResponse(res.data); // Set response from backend
+        setResponse(res.data);
       } else {
         alert("Error uploading video: " + res.statusText);
       }
     } catch (err) {
       console.error(err);
       alert(
-        err.response && err.response.data && err.response.data.error
-          ? `Error: ${err.response.data.error}`
-          : "Unknown error occurred"
+        err.response?.data?.error || "An unknown error occurred during upload."
       );
     }
   };
 
-  return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>Video Violence Detection</h1>
-      <p>Upload a video to check if violence is detected.</p>
-      <input type="file" onChange={handleFileChange} accept="video/*" />
-      <button
-        onClick={handleUpload}
-        style={{
-          marginLeft: "10px",
-          padding: "10px 20px",
-          backgroundColor: "#4CAF50",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Upload Video
-      </button>
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
-      {response && (
-        <div style={{ marginTop: "20px" }}>
+  return (
+    <div className={`app-container ${darkMode ? "dark-mode" : ""}`}>
+      <header className="header">
+        <h1>🎥 Video Violence Detection System</h1>
+        <div className="toggle-switch">
+          <input
+            type="checkbox"
+            id="darkModeToggle"
+            checked={darkMode}
+            onChange={toggleDarkMode}
+          />
+          <label htmlFor="darkModeToggle"></label>
+        </div>
+      </header>
+      <div className="cards-container">
+        {/* Upload Section */}
+        <div className="card upload-card">
+          <h2>Upload Video</h2>
+          <p>Upload a video to check for violence detection.</p>
+          <input type="file" onChange={handleFileChange} accept="video/*" />
+          <button className="upload-button" onClick={handleUpload}>
+            Upload Video
+          </button>
+        </div>
+        {/* Result Section */}
+        <div className="card result-card">
           <h2>Results</h2>
-          {response.violence_detected ? (
-            <div>
-              <p style={{ color: "red", fontWeight: "bold" }}>
-                Violence Detected!
-              </p>
-              <img
-                src={`http://127.0.0.1:5000/uploads/${response.frame_path}`}
-                alt="Violence Frame"
-                style={{
-                  width: "300px",
-                  border: "2px solid red",
-                  borderRadius: "5px",
-                }}
-              />
-            </div>
+          {response ? (
+            response.violence_detected ? (
+              <div className="result-content detected">
+                <p>🚨 Violence Detected!</p>
+                <img
+                  src={`http://127.0.0.1:5000/uploads/${response.frame_path}`}
+                  alt="Violence Frame"
+                  className="result-image"
+                />
+              </div>
+            ) : (
+              <div className="result-content not-detected">
+                <p>✅ No Violence Detected!</p>
+              </div>
+            )
           ) : (
-            <p style={{ color: "green", fontWeight: "bold" }}>
-              No Violence Detected!
+            <p className="placeholder-text">
+              Results will appear here after upload.
             </p>
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

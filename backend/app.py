@@ -14,11 +14,11 @@ from email import encoders
 load_dotenv()
 app = Flask(__name__)
 CORS(app)  # Enable CORS
-UPLOAD_FOLDER = '/uploads'
+UPLOAD_FOLDER = '/Users/kunalsangwan/Violence_detection/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Load the trained model
-model = load_model("C:\\Users\\singl\\OneDrive - LAG\\Desktop\\modelnew.h5")
+model = load_model("/Users/kunalsangwan/Downloads/modelnew.h5")
 
 # Email configuration
 
