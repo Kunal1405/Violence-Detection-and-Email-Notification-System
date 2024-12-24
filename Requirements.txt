@@ -1,0 +1,10 @@
+tensorflow>=2.10.0
+keras
+opencv-python
+numpy
+pandas
+matplotlib
+scipy
+smtplib
+email-validator
+flask

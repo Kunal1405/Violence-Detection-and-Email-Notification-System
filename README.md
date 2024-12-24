@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Violence Detection and Email Notification System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project implements a real-time violence detection system using deep learning. The system processes video streams to detect violent activities and sends automated email notifications to alert concerned individuals or authorities. The model is built on **MobileNetV2** for efficient and accurate performance.
 
-## Available Scripts
+## Features
+- **Real-Time Detection**: Identifies violent activities in live video streams or recorded footage.
+- **Automated Email Alerts**: Sends instant notifications upon detecting violence.
+- **Efficient and Lightweight**: Uses MobileNetV2 for fast and resource-efficient processing.
+- **Scalable**: Easily adaptable to various environments like schools, workplaces, or public spaces.
 
-In the project directory, you can run:
+## How It Works
+1. **Video Input**: Processes video frames from a live feed or pre-recorded videos.
+2. **Violence Detection**: Uses a pretrained MobileNetV2 model to identify violent actions in frames.
+3. **Email Notification**: Triggers an email alert to predefined recipients if violence is detected.
 
-### `npm start`
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:Kunal1405/Violence-Detection-and-Email-Notification-System.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Violence-Detection-and-Email-Notification-System
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Configure email settings in `config.py` with your SMTP credentials.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
+1. Run the script to start the detection system:
+   ```bash
+   python main.py
+   ```
+2. Monitor the console for detection logs and email notifications.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
+- **Deep Learning Framework**: TensorFlow/Keras
+- **Model Architecture**: MobileNetV2
+- **Programming Language**: Python
+- **Notification Service**: SMTP/Email APIs
 
-### `npm test`
+## Applications
+- Public safety and surveillance
+- School and workplace security
+- Crowd monitoring and management
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes. For major changes, open an issue first to discuss your ideas.
 
-### `npm run build`
+## License
+This project is licensed under the [MIT License](LICENSE).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contact
+For any inquiries or support, please reach out to [Kunal Sangwan](mailto:your-email@example.com).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
